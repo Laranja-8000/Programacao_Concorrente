@@ -74,19 +74,16 @@ int main(int argc, char *argv[]){
     nthreads = atoi(argv[1]);
 
     /* Alocando espaço para as threads */
-    //printf("Allocating memory...\n");
     pthread_t *threads;
     threads = (pthread_t *)malloc(sizeof(pthread_t)*nthreads*3);
 
     /* Inicializando o lock de exclusão mútua e as variáveis de condição */
-    //printf("Initializing mutual exclusion locks...\n");
     pthread_mutex_init(&x_mutex, NULL);
     pthread_cond_init(&x_cond1, NULL);
     pthread_cond_init(&x_cond2, NULL);
 
     /* Instanciando função para cada thread */
     int i;
-    //printf("Creating Threads...\n");
     for(i=0; i<nthreads; i++){
         pthread_create(&threads[i], NULL, A, i+1);
     }
@@ -101,8 +98,7 @@ int main(int argc, char *argv[]){
     for(i=0;i<nthreads*3;i++){
         pthread_join(threads[i], NULL);
     }
-    //printf("FIM\n");
-
+    
     /* Desaloca variáveis e termina */
     pthread_mutex_destroy(&x_mutex);
     pthread_cond_destroy(&x_cond1);
