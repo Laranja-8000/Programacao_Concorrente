@@ -1,1 +1,30 @@
+Tempos de execução
+
+Mutex, 1 Thread:
+Tempo: 1.544682
+Tempo: 1.521792
+Tempo: 1.570322
+Tempo: 1.543960
+Tempo: 1.550786
+
+Mutex, 4 Threads:
+Tempo: 2.747019
+Tempo: 2.663510
+Tempo: 2.699445
+Tempo: 2.846025
+Tempo: 2.699878
+
+RWLock, 1 Thread:
+Tempo: 1.615255
+Tempo: 1.565614
+Tempo: 1.544057
+Tempo: 1.570553
+Tempo: 1.554784
+
+RWLock, 4 Threads:
+Tempo: 5.225193
+Tempo: 5.085008
+Tempo: 5.118845
+Tempo: 4.908201
+Tempo: 4.806821
 
