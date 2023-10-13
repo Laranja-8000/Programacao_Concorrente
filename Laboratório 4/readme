@@ -14,6 +14,7 @@ Tempo: 2.699445
 Tempo: 2.846025
 Tempo: 2.699878
 
+======================================================
 RWLock, 1 Thread:
 Tempo: 1.615255
 Tempo: 1.565614
@@ -27,4 +28,21 @@ Tempo: 5.085008
 Tempo: 5.118845
 Tempo: 4.908201
 Tempo: 4.806821
+
+======================================================
+Implementação própria, 1 Thread:
+Tempo: 2.141630
+Tempo: 2.123738
+Tempo: 2.127138
+Tempo: 2.154913
+Tempo: 2.121912
+
+Implementação própria, 4 Threads:
+Tempo: 2.416842
+Tempo: 2.467768
+Tempo: 2.462210
+Tempo: 2.496965
+Tempo: 2.495229
+
+
 
