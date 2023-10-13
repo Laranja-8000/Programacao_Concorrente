@@ -20,7 +20,28 @@ struct list_node_s* head_p = NULL;
 int nthreads;
 //lock de exclusao mutua
 
-int cond_member = 0, cond_insere = 0, cond_delete = 0;
+int cond_leitura = 0, cond_escrita = 0;
+
+void entraLeitura(){
+   while(cond_leitura != 0){
+      // só espera
+   }
+}
+
+void saiLeitura(){
+   cond_leitura = 0;
+}
+
+void entraEscrita(){
+   while(cond_escrita != 0){
+      // só espera
+   }
+}
+
+void saiEscrita(){
+   cond_escrita = 0;
+}
+
 
 //tarefa das threads
 void* tarefa(void* arg) {
@@ -36,37 +57,28 @@ void* tarefa(void* arg) {
     // o bloco dentro de cada if é uma SC
     if(op<98) {
 
-        
-        while(cond_member != 0){
-            // só espera
-        }
-        cond_member = 1; 
+        entraLeitura(); 
         Member(i%MAX_VALUE, head_p);   /* Ignore return value */
-        cond_member = 0;     
+        read++;
+        saiLeitura();     
       
 	 read++;
       } else if(98<=op && op<99) {
 
-        while(cond_insere != 0){
-            // só espera
-        }
-        cond_insere = 1; 
+        entraEscrita();
         Insert(i%MAX_VALUE, &head_p);  /* Ignore return value */
         in++;
-        cond_insere = 0;
+        saiEscrita();
     
         }
          
 	 
       else if(99<=op) {
 
-        while(cond_delete != 0){
-            // só espera
-        }
-        cond_delete = 1; 
+        entraEscrita(); 
         Delete(i%MAX_VALUE, head_p);   /* Ignore return value */
         out++;
-        cond_delete = 0;   
+        saiEscrita();   
 	 
       }
     }
