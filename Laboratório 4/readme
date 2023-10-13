@@ -1,4 +1,4 @@
-Nota-se peos tempos de execução: 
+Nota-se pelos tempos de execução: 
 -A implementação própria se mostrou bem ineficiente para uma única thread, mas
 mas não teve uma queda de performance significativa para mais threads, tendo
 melhor tempo médio nesse entre os 3.
