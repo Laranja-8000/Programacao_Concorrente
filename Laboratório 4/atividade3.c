@@ -1,4 +1,8 @@
-//Programa concorrente que cria e faz operacoes sobre uma lista de inteiros
+// Programação Concorrente
+// Aluno: Lucas Cavalcante Nascimento Silva
+// DRE: 121056863
+// Laboratório 4 - Atividade 3
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,8 +21,6 @@ int nthreads;
 //lock de exclusao mutua
 
 int cond_member = 0, cond_insere = 0, cond_delete = 0;
-
-
 
 //tarefa das threads
 void* tarefa(void* arg) {
@@ -96,9 +98,6 @@ int main(int argc, char* argv[]) {
    if(tid==NULL) {  
       printf("--ERRO: malloc()\n"); return 2;
    }
-
-   //inicializa a variavel mutex
-   //pthread_mutex_init(&mutex, NULL);
    
    //cria as threads
    for(long int i=0; i<nthreads; i++) {
@@ -119,8 +118,7 @@ int main(int argc, char* argv[]) {
    delta = fim-ini;
    printf("Tempo: %lf\n", delta);
 
-   //libera o mutex
-   //pthread_mutex_destroy(&mutex);
+
    //libera o espaco de memoria do vetor de threads
    free(tid);
    //libera o espaco de memoria da lista
