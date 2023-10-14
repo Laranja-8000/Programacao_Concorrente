@@ -1,11 +1,9 @@
 Nota-se pelos tempos de execução: 
--A implementação própria se mostrou bem ineficiente para uma única thread, mas
-mas não teve uma queda de performance significativa para mais threads, tendo
-melhor tempo médio nesse entre os 3.
 -O RWLock é mais ágil em seus melhores casos, mas sendo severamente prejudicado
 nos demais, conseguindo ser pior que a implementação própria no caso de 4 threads.
--O mutex foi o que se mostrou mais equilibrado.
-
+-O mutex foi o que se mostrou mais eficiente.
+-A outra implementação, por sinalização condicional, se mostrou bem ineficiente em ambos casos,
+tendo os maiores tempos médios entre os 3.
 
 Tempos de execução:
 
@@ -39,19 +37,16 @@ Tempo: 4.908201
 Tempo: 4.806821
 
 ======================================================
-Implementação própria, 1 Thread:
-Tempo: 2.141630
-Tempo: 2.123738
-Tempo: 2.127138
-Tempo: 2.154913
-Tempo: 2.121912
+Outra implementação, 1 Thread:
+Tempo: 2.910105
+Tempo: 2.843702
+Tempo: 2.832868
+Tempo: 2.847334
+Tempo: 2.880598
 
-Implementação própria, 4 Threads:
-Tempo: 2.416842
-Tempo: 2.467768
-Tempo: 2.462210
-Tempo: 2.496965
-Tempo: 2.495229
-
-
-
+Outra implementação, 4 Threads:
+Tempo: 5.177305
+Tempo: 5.233673
+Tempo: 5.215565
+Tempo: 5.174519
+Tempo: 5.361368
