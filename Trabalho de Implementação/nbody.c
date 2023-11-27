@@ -73,13 +73,14 @@ void simulate_n_body(Body *bodies, int num_bodies, double duration) {
     fclose(output_file);
 }
 
+#define NUM_BODIES 2
 int main() {
     // Definir parâmetros da simulação
-    int num_bodies = 2;
+    //int num_bodies = 2;
     double duration = 20.0;
 
     // Inicializar corpos
-    Body bodies[num_bodies];
+    Body bodies[NUM_BODIES];
     bodies[0].x = 0.0;
     bodies[0].y = 0.0;
     bodies[0].vx = 0.0;
@@ -93,7 +94,7 @@ int main() {
     bodies[1].mass = 1.0;
 
     // Simular N-corpo e salvar posições no arquivo
-    simulate_n_body(bodies, num_bodies, duration);
+    simulate_n_body(bodies, NUM_BODIES, duration);
 
     return 0;
 }
