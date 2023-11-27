@@ -179,14 +179,14 @@ for i in range(len(par)):
     var.append(par[i].initial_vel.x)
     var.append(par[i].initial_vel.y)
 
-# ODE solver parameters
+# ODE solver parameters 
 
 t = np.linspace(0,t_end,steps+1)
 
-sol = odeint(vectorfield, var, t)
+sol = odeint(vectorfield, var, t) # << PARALELIZAR AQUI
 sol = np.transpose(sol)
 
-# order the solution for clarity << PARALELIZAR AQUI
+# order the solution for clarity 
 
 for i in range(n):
     par[i].sol_pos.x = sol[2*i]
