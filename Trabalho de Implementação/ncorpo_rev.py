@@ -47,15 +47,16 @@ scatter = ax.scatter(position[:,0], position[:,1], np.sqrt(mass),
                      color="#56c474", edgecolors='black', lw=1)
 
 
-def calculate_acceleration_matrix(P, M, gravity, softening):
+def calculate_acceleration_matrix(P, M, gravity, softening, j):
     x = P[:,0:1]
     y = P[:,1:2]
+
     dx = x.T - x
     dy = y.T - y
     inv_r3 = (dx**2 + dy**2 + softening**2) ** (-1.5)
     ax = gravity * (dx * inv_r3) @ M
     ay = gravity * (dy * inv_r3) @ M
-    return np.hstack((ax, ay))
+    return np.hstack((ax[j], ay[j]))
 
 from matplotlib.animation import FuncAnimation
 
@@ -63,12 +64,28 @@ def animate(i):
     global acceleration, velocity, position, softening 
     global step_size, half_step_size
 
+    # Codigo sequencial destrinchado: << PARALELIZAR AQUI
+    for j in range(n):
+        velocity[j] += acceleration[j] * half_step_size
+
+    for j in range(n):
+        position[j] += velocity[j] * step_size
+
+    for j in range(n):
+        acceleration[j] = calculate_acceleration_matrix(position, mass, gravity, softening, j)
+
+    for j in range(n):
+        velocity[j] += acceleration[j] * half_step_size
+
+    # Codigo original (sequencial de modo implícito):        
+    '''
     velocity += acceleration * half_step_size
     position += velocity * step_size
     
     acceleration = calculate_acceleration_matrix(position, mass, gravity, softening)
 
     velocity += acceleration * half_step_size
+    '''
     scatter.set_offsets(position)
 
 
